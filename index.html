@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   
+    <input type="text" id="input" placeholder="Enter phone name">
+    <button id="searchBtn">Find</button>
+
+
+	<h1>Search for redmi,samsung,apple,poco,iqoo</h1>
+
+    <h1 id="result"></h1>
+    <img id="phoneImage" src="" alt="" style="display:none; width: 200px; height: 200px;">
+	<p id="content"></p>
+	<p id="rating"></p>
+
+    <script>
+        let arr = [
+            {
+                name:"redmi",
+                src: "https://imgs.search.brave.com/oPXLWEg7YlCxfzmyqkFhjrpVhyyScgg2BSaJydOhplU/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9zdXBy/ZW1lbW9iaWxlcy5p/bi9jZG4vc2hvcC9m/aWxlcy9SZWRtaS0x/Mi01Ry1XaGl0ZS1B/dmFpbGFibGUtTm93/X2E5NzAyOGIxLWJh/ZjMtNDYyYy1iNjgw/LWI1MTUzNmIyOWJj/Yy5qcGc_dj0xNjky/MDEwOTIxJndpZHRo/PTExMDA",
+                text:"redmi is a good mobile try to buy it",
+				Rating:4.5
+            },
+            {
+                name:"samsung",
+                src: "https://imgs.search.brave.com/IogEoHwO2sULiV1wOfQx87KXZzNS4pdgWu9JxvZHXSs/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9mZG4y/LmdzbWFyZW5hLmNv/bS92di9iaWdwaWMv/c2Ftc3VuZy1nYWxh/eHktYTUwLXNtLWE1/MDVmLWRzLmpwZw",
+				text:"redmi is a good mobile try to buy it",
+				Rating:4.9
+
+            },
+            {
+                name:"apple",
+                src: "https://imgs.search.brave.com/B93e3UDl43327AU2gyJ5zNoHplbrasVd8dswagGgOts/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NjFiSzZQTU9DM0wu/anBn",
+				text:"redmi is a good mobile try to buy it",
+				Rating:5
+            },
+            {
+                name:"poco",
+                src: "https://imgs.search.brave.com/z-qnx3XooQXbY_S56PMJq-PG0izhekSfXN1-SwyJlDs/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9mZG4y/LmdzbWFyZW5hLmNv/bS92di9waWNzL3hp/YW9taS94aWFvbWkt/cG9jby1tMy0wLmpw/Zw",
+				text:"redmi is a good mobile try to buy it",
+				Rating:4.6
+
+
+            },
+            {
+                name:"iqoo",
+                src: "https://imgs.search.brave.com/xaddPE9niFvSsYbE_9UQF5L4fT7MV9CLlm3bZPBsngE/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9mZG4y/LmdzbWFyZW5hLmNv/bS92di9iaWdwaWMv/dml2by1pcW9vLmpw/Zw",
+				text:"redmi is a good mobile try to buy it",
+				Rating:4.7
+
+            }
+        ];
+
+        let text = document.getElementById("input");
+        let search = document.getElementById("searchBtn");
+
+        let result = document.getElementById("result");
+        let phoneImage = document.getElementById("phoneImage");
+		let content=document.getElementById("content")
+		
+
+		let rating=document.getElementById("rating")
+		
+
+        search.addEventListener("click", (e) => {
+            e.preventDefault();
+            
+            let searchValue = text.value; 
+            let found = arr.find(item => item.name == searchValue); 
+            
+            if (found) {
+                result.textContent = "Phone Name: " + found.name;
+                phoneImage.src = found.src; 
+                phoneImage.style.display = "block"; 
+				phoneImage.style.width="200px"
+
+				content.innerHTML=found.text;
+				rating.innerHTML=found.Rating
+
+            } else {
+                result.textContent = "Phone not found!";
+                phoneImage.style.display = "none"; 
+            }
+			let div=document.createElement("div")
+			div.style.border="2px solid gray"
+			div.style.width="20%"
+
+
+			result.style.backgroundColor="LightGray"
+
+			content.style.backgroundColor="gray"
+		content.style.padding="10px"
+
+			rating.style.backgroundColor="pink"
+		rating.style.padding="10px"
+
+			div.appendChild(result)
+			div.appendChild(phoneImage)
+			div.appendChild(content)
+			div.appendChild(rating)
+			document.body.appendChild(div)
+        });
+    </script>
+</body>
+</html>
+
